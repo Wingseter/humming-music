@@ -5,7 +5,6 @@ import 'package:record/record.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../models/track.dart';
-import '../models/instrument.dart';
 
 class AudioService extends ChangeNotifier {
   final AudioRecorder _recorder = AudioRecorder();
@@ -146,7 +145,7 @@ class AudioService extends ChangeNotifier {
 
   // Convert MIDI note to frequency
   static double midiToFrequency(int midi) {
-    return 440 * pow(2, (midi - 69) / 12);
+    return 440.0 * pow(2, (midi - 69) / 12).toDouble();
   }
 
   @override
