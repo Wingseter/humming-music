@@ -1,0 +1,45 @@
+name: humming_music
+description: Transform your humming into musical instruments
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Audio Recording & Processing
+  record: ^5.0.4
+  audioplayers: ^5.2.1
+  flutter_sound: ^9.2.13
+  
+  # Pitch Detection
+  pitch_detector: ^0.4.0
+  
+  # State Management
+  provider: ^6.1.1
+  
+  # UI Components
+  cupertino_icons: ^1.0.6
+  
+  # File & Path
+  path_provider: ^2.1.1
+  permission_handler: ^11.1.0
+  
+  # Utils
+  uuid: ^4.2.1
+  intl: ^0.18.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/soundfonts/
