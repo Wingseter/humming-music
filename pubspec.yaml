@@ -17,7 +17,7 @@ dependencies:
   flutter_sound: ^9.2.13
   
   # Pitch Detection
-  pitch_detector: ^0.4.0
+  pitch_detector_dart: ^0.0.4
   
   # State Management
   provider: ^6.1.1
