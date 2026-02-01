@@ -12,9 +12,9 @@ dependencies:
     sdk: flutter
   
   # Audio Recording & Processing
-  record: ^5.0.4
-  audioplayers: ^5.2.1
-  flutter_sound: ^9.2.13
+  record: ^5.2.0
+  audioplayers: ^6.0.0
+  flutter_sound: ^9.16.0
   
   # Pitch Detection
   pitch_detector_dart: ^0.0.4
