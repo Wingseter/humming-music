@@ -24,30 +24,6 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(':app')
-    
-    // Create mock flutter extension for plugins that need it
-    afterEvaluate { project ->
-        if (project.hasProperty('android')) {
-            project.android {
-                if (namespace == null) {
-                    namespace = project.group ?: "com.example.${project.name.replace('_', '.')}"
-                }
-                compileSdk = 35
-                ndkVersion = "25.1.8937393"
-            }
-        }
-    }
-    
-    // Pre-configure android extension before evaluation
-    project.plugins.whenPluginAdded { plugin ->
-        if (plugin.class.name == 'com.android.build.gradle.LibraryPlugin') {
-            project.extensions.create("flutter", FlutterExtension)
-            project.android {
-                compileSdk = 35
-                ndkVersion = "25.1.8937393"
-            }
-        }
-    }
 }
 
 // Mock Flutter extension class for plugins that reference flutter.* properties
@@ -56,6 +32,20 @@ class FlutterExtension {
     int minSdkVersion = 24
     int targetSdkVersion = 35
     String ndkVersion = "25.1.8937393"
+}
+
+// Configure subprojects with Android Library plugin
+subprojects { subproject ->
+    subproject.plugins.withId('com.android.library') {
+        // Create flutter extension if not exists
+        if (!subproject.extensions.findByName('flutter')) {
+            subproject.extensions.create("flutter", FlutterExtension)
+        }
+        subproject.android {
+            compileSdk = 35
+            ndkVersion = "25.1.8937393"
+        }
+    }
 }
 
 tasks.register("clean", Delete) {
