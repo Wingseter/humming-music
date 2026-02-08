@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/home_screen.dart';
@@ -5,8 +6,19 @@ import 'services/audio_service.dart';
 import 'services/track_manager.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const HummingMusicApp());
+  runZonedGuarded(() {
+    WidgetsFlutterBinding.ensureInitialized();
+    
+    FlutterError.onError = (FlutterErrorDetails details) {
+      FlutterError.presentError(details);
+      debugPrint('Flutter Error: ${details.exception}');
+    };
+    
+    runApp(const HummingMusicApp());
+  }, (error, stackTrace) {
+    debugPrint('Caught error: $error');
+    debugPrint('Stack trace: $stackTrace');
+  });
 }
 
 class HummingMusicApp extends StatelessWidget {

@@ -14,10 +14,10 @@ dependencies:
   # Audio Recording & Processing
   record: ^6.0.0
   audioplayers: ^6.0.0
-  flutter_sound: ^9.16.0
+  # flutter_sound: ^9.16.0  # 제거 - 사용 안 함
   
   # Pitch Detection
-  pitch_detector_dart: ^0.0.4
+  # pitch_detector_dart: ^0.0.4  # 제거 - 사용 안 함
   
   # State Management
   provider: ^6.1.1
